@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -66,6 +67,7 @@ CommonsConfig{
 	
 	// 此方法就可以正常处理信息！
 		public void handle(EventInMessage msg) {
+			LOG.trace("处理信息： {}", msg);
 			// 1.获取事件的类型，并且在后面加上MessageProcessor组成Bean的id
 			String id = msg.getEvent().toLowerCase() + "MessageProcessor";
 			try {
@@ -77,6 +79,8 @@ CommonsConfig{
 				}else {
 					LOG.error("利用Bean的ID {} 不能找到一个事件消息处理器!", id);
 				}	
+			}catch (NoSuchBeanDefinitionException e) {
+				LOG.trace("当前模块不适合处理 {} 消息，没有对应的处理器实现", msg.getEvent());
 			}catch (Exception e) {
 				LOG.error("无法处理事件：" + e.getLocalizedMessage(), e);
 			}
