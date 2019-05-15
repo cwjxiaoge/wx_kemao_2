@@ -5,7 +5,7 @@ cd weixin_2
 mvn  spring-boot:stop
 
 # 停止关注程序
-cd ../subsrcibe
+cd ../subscribe
 mvn  spring-boot:stop
 
 # 停止取消关注程序
