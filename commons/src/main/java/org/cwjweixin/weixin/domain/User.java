@@ -3,6 +3,7 @@ package org.cwjweixin.weixin.domain;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -13,11 +14,10 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.repository.cdi.Eager;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Eager
+@Entity
 @Table(name="wx_user")
 public class User {
 	
