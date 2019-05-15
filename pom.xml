@@ -8,6 +8,7 @@
   	<module>weixin_2</module>
   	<module>commons</module>
   	<module>subsrcibe</module>
+  	<module>unsubscribe</module>
   </modules>
   
   <!-- 项目的属性配置 -->
